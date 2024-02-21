@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../static/files/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/files/css/lightslider.css">
+    <link rel="stylesheet" href="../static/files/css/style.css">
+    <!-- js files -->
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/files/js/jquery.js"></script>
+    <script src="../static/files/js/lightslider.js"></script>
+    <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html'%}
+        <!-- {{product}} -->
+        <section class="row">
+            <div class="col-md-4">
+        <!-- product variable holds the Current Product, This comes from /single_item route in app.py  -->
+            <!-- product variable is indexed from 0  - 5  to access specific product details
+            product[1] is product name, product[5] represent product image etc..  -->
+                   <img src="../static/images/{{product[5]}}" alt="" width="300" height="300"
+                   class="img-thumbnail shadow p-4"><br><br>
+                   <h3>{{ product[1] }}</h3>
+            </div>
+
+           <div class="col-md-8">
+                  <p class="text-muted">{{ product[2] }}</p>
+                  <h4>KES {{ product[3] }}</h4>
+                  <b class="text-danger">Category: {{ product[4] }}</b> <br><br>
+           </div>
+        </section>
+    </div>
+</body>
+</html>
