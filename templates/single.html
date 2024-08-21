@@ -18,7 +18,7 @@
     <div class="container-fluid">
         {% include 'navbar.html'%}
         <!-- {{product}} -->
-        <section class="row">
+        <section class="row my-5">
             <div class="col-md-4">
         <!-- product variable holds the Current Product, This comes from /single_item route in app.py  -->
             <!-- product variable is indexed from 0  - 5  to access specific product details
@@ -29,11 +29,35 @@
             </div>
 
            <div class="col-md-8">
-                  <p class="text-muted">{{ product[2] }}</p>
+                <div>
+                <p class="text-muted">{{ product[2] }}</p>
                   <h4>KES {{ product[3] }}</h4>
                   <b class="text-danger">Category: {{ product[4] }}</b> <br><br>
+                </div>
+                <div>
+                    <!-- check if the user is logged in -->
+                    {% if session['key']%}
+                    <!-- create a form that has a n action to mpesa route -->
+                    <form action="/mpesa" method="post">
+                        <!-- create a phone number input , that user wil enter the phone number tosend STK push to; -->
+                        <input type="number" name="phone" placeholder="Enter phone 2547********" class="form-control">
+
+                        <label for="">To Pay KES</label>
+                        <!-- bind the product amount from the database -->
+                        <input type="number" name="amount" value="{{product[3]}}" class="form-control">
+
+                        <input type="submit" class="btn btn-dark" value="Pay Now">
+
+                    </form>
+                    <!-- if user is not logged in -->
+                    {% else %}
+                    <h4>Please Sign In To Make Payment</h4>
+                    <a href="/signin">Sign In</a>
+                    {% endif %}
+                </div>
            </div>
         </section>
+        {% include 'footer.html'%}
     </div>
 </body>
 </html>

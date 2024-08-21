@@ -24,8 +24,10 @@
         <!-- smartphones section -->
         <h2 class="text-warning display-6 text-center mt-4">smartphones</h2>
         <section class="slider p-4">
+
             <ul class="cs-hidden autoWidth">
                 {% for item in smartphones %}
+
                     <li>
                         <div class="box">
                             <div class="slide-img">
@@ -45,11 +47,12 @@
             </ul>
         </section>
 
-        <!-- smartphones section -->
         <h2 class="text-warning display-6 text-center mt-4">Electronics</h2>
         <section class="slider p-4">
+
             <ul class="cs-hidden autoWidth">
                 {% for item in electronics %}
+
                     <li>
                         <div class="box">
                             <div class="slide-img">
@@ -68,9 +71,11 @@
                 {% endfor %}
             </ul>
         </section>
-        
 
         
+        
+
+        {% include 'footer.html'%}
     </div>
 </body>
 </html>
